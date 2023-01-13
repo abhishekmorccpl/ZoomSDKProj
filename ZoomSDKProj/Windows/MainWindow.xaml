@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:JLK.Helpers"             
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             x:Class="JLK.Windows.MainWindow"
+             BackgroundImageSource="background.jpg">
+
+    <Grid x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+            <Border Margin="10, 10, 5, 5" StrokeShape="RoundRectangle 10" Grid.Column="0" Background="White" >
+                
+                <Grid>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="100*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel x:Name="dpHome" Margin="10, 10, 10, 10" IsVisible="true" Grid.Row="0">
+                        <Border StrokeShape="RoundRectangle 7" StrokeThickness="0" DockPanel.Dock="Top" Background="White">
+                            <Label x:Name="tbHeader" HorizontalOptions="Aspect" Grid.Row="0" Background="WhiteSmoke" FlowDirection="LeftToRight" Text="Home" FontSize="18" FontAttributes="Bold"  Padding="10,10,0,10" VerticalOptions="Start" Margin="0,0,0,0"  FontFamily="Gothic"/>
+                        </Border>
+                        <Border x:Name="BorderIllustration" Background="White" IsVisible="true" HorizontalOptions="Center">
+                            <Image x:Name="gifDeviceIllustration" Source="/Assets/screensaver_white.gif" />
+                        </Border>
+                        <Border x:Name="BorderOtoscope"   StrokeThickness="0" IsVisible="false">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100*"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <DockPanel Margin="0" HorizontalOptions="Aspect" Grid.Row="0" Grid.RowSpan="3">
+                                    <Border StrokeShape="RoundRectangle 7"  StrokeThickness="0" DockPanel.Dock="Top" Background="White">
+                                        <Label HorizontalOptions="Aspect" Grid.Row="0" Background="WhiteSmoke"  Text="Otoscope" FontSize="18"  FontAttributes="Bold" Padding="10,10,0,10" VerticalOptions="Start" Margin="0,0,0,0"  FontFamily="Gothic"/>
+                                    </Border>
+                                </DockPanel>
+
+                                <DockPanel HorizontalOptions="Aspect" Grid.Row="0">
+                                    <DockPanel.Background>
+                                        <Image Source="/Assets/MedlyvesWM-img/otoscope.png" Aspect="None"/>
+                                    </DockPanel.Background>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="90*"/>
+                                            <RowDefinition Height="80*"/>
+                                            <RowDefinition Height="10*"/>
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" IsVisible="false">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image x:Name="otoimg9" Margin="04,04,04,04" Aspect="Fill" Grid.Column="4"/>
+                                            <Image x:Name="otoimg2" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="1"/>
+                                            <Image x:Name="otoimg3" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="2"/>
+                                            <Image x:Name="otoimg4" Margin="04,04,04,04"  Aspect="Fill" Grid.Column="4"/>
+                                            <Image x:Name="otoimg5" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="5"/>
+                                        </Grid>
+
+                                        <Grid Grid.Row="0">
+                                            <StackPanel Margin="20 0">
+                                                <Image x:Name="otoimg10" Margin="04,04,04,04" Aspect="Uniform"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Image x:Name="otoimg1" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="0"/>
+                                            <Image x:Name="otoimg6" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="1"/>
+                                            <Image x:Name="otoimg7" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="2"/>
+                                            <Image x:Name="otoimg8" Margin="04,04,04,04"  Aspect="Fill"  Grid.Column="3"/>
+
+                                            <Button x:Name="_OtoscopeCapture" Grid.Column="5" Text="Capture" FontSize="24" FontAttributes="Bold"   FontFamily="Gothic" TextColor="WhiteSmoke" Background="#18d0ce"   HorizontalOptions="Center" Width="100" Height="50"  Command="{Binding OtoscopeCapture}" IsVisible="false"/>
+                                        </Grid>
+                                    </Grid>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
+                    </DockPanel>
+
+
+                    <DockPanel x:Name="dpTeleconsult" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="VideoContainerBorder"  Background="Transparent" SizeChanged="VideoContainerBorder_SizeChanged" IsVisible="true">
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpTemp" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="Tempvideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/Temperature.gif" Aspect="Uniform" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpBloodPressure" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="Bloodvideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/Blood-pressure.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpSpo2" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="Spo2videoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/SPO2.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpHeight" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="Heightvideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/weight.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpbodyfat" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="bodyfatvideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/height-weight.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpOtoscope" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="Otoscopevideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/otoscope.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+                    <DockPanel x:Name="dpstethoscope" Margin="10, 10, 10, 10" IsVisible="false" Grid.Row="0">
+                        <Border x:Name="stethoscopevideoborder"  Background="Transparent" IsVisible="true">
+                            <Image Source="/Assets/stethoscope.gif" Aspect="None" />
+                        </Border>
+                    </DockPanel>
+
+                    <DockPanel x:Name="dpHealthScreen" IsVisible="false" Grid.Row="0">
+
+
+                    </DockPanel>
+                </Grid>
+
+
+
+
+            </Border>
+
+            <Border Margin="5, 10, 10, 5" StrokeShape="RoundRectangle 10" Grid.Column="1" Background="White" >
+                <StackPanel>
+                    <Image Source="/Assets/Medlyes_logo-old.png" Margin="5,10,5,5" Height="60" />
+
+                    <Border Margin="5, 10, 10, 5" StrokeShape="RoundRectangle 10" Grid.Column="1" Background="Green" VerticalOptions="Bottom" >
+                        <Image Source="/Assets/Medlyes_logo-old.png" Margin="5,10,5,5" Height="60" />
+                    </Border>
+                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="60*"/>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <Image Source="/Assets/Medlyes_logo-old.png" Margin="5,5,5,5" Height="60" Grid.Row="0" />
+                    <Border StrokeThickness="0,0,0,1"  Height="30" Grid.Row="1" VerticalOptions="Bottom" Padding="5,0,0,5">
+                        <Label HorizontalOptions="Left"  Text="Client Details" FontSize="18"  FontAttributes="Bold" VerticalOptions="Start" FontFamily="Gothic" />
+                    </Border>
+                    <Grid Grid.Row="2" VerticalOptions="Start" Margin="0,5,1,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="15*"/>
+                            <RowDefinition Height="15*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30*"/>
+                            <ColumnDefinition Width="70*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Name:" HorizontalOptions="Left" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" FontSize="16"  Margin="5,0,0,5"/>
+                        <Label Text="Age:" HorizontalOptions="Left" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" FontSize="16"  Margin="5,0,0,5"/>
+                        <Label Text="Gender:" HorizontalOptions="Left" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" FontSize="16"  Margin="5,0,0,5"/>
+                        <Label Text="ID:" HorizontalOptions="Left" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" FontSize="16"  Margin="5,0,0,5"/>
+                        <Label x:Name="tbPatientname" HorizontalOptions="Left"  VerticalOptions="Start" Grid.Row="0" FontSize="16" Margin="0,5,0,5"  Grid.Column="1"/>
+                        <Label x:Name="tbPatientAge" HorizontalOptions="Left"  VerticalOptions="Start" Grid.Row="1" FontSize="16" Margin="0,5,0,5" Grid.Column="1" />
+                        <Label x:Name="tbPatientGender" HorizontalOptions="Left"  VerticalOptions="Start" Grid.Row="2" FontSize="16" Margin="0,5,0,5" Grid.Column="1"/>
+                        <Label x:Name="tbPatientMobile" HorizontalOptions="Left"  VerticalOptions="Start" Grid.Row="3" FontSize="16" Margin="0,5,0,5" Grid.Column="1"/>
+                    </Grid>
+                    <Button VerticalOptions="Bottom" x:Name="btnEndSession" Grid.Row="3" Text="End Session" FontSize="20" Foreground="White" Background="#f44336"  Width="280" Height="55" Cursor="Hand" Click="btnEndSession_Click">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}" StrokeShape="RoundRectangle 10">
+                                                <ContentPresenter HorizontalOptions="Center" VerticalOptions="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Border StrokeThickness="1"  StrokeShape="RoundRectangle 7" BorderBrush="Black" Height="50" Grid.Row="4" VerticalOptions="Bottom" Margin="5,0,5,5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="33*" />
+                                <ColumnDefinition Width="33*" />
+                                <ColumnDefinition Width="33*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="/Assets/Imgs/InternetGreen.png" Margin="5,5,5,5" Height="35" Grid.Row="0" Grid.Column="0" ToolTip="Internet Connected" />
+                            <Image Source="/Assets/Imgs/DevicesGreen.png" Margin="5,5,5,5" Height="35" Grid.Row="0" Grid.Column="1"  ToolTip="Devices Connected"/>
+                            <Image Source="/Assets/Imgs/BackendGreen.png" Margin="5,5,5,5" Height="35"  Grid.Row="0" Grid.Column="2"  ToolTip="Backend Connected"/>
+                        </Grid>
+
+                    </Border>
+                </Grid>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border x:Name="cardTemperature" Grid.Row="0" Grid.Column="0" Margin="10,5,5,5" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="Temperature_Click" Cursor="Hand" >
+                <Border.Effect>
+                    <DropShadowEffect Color="#42BEBE" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/thermometer.jpg" Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="70" Width="70" HorizontalOptions="Left" VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/thermometer.jpg" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Temperature"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#42BEBE" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label x:Name="lblTemperature" FontSize="26"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardBloodPressure" Grid.Row="0" Grid.Column="1" Margin="5,5,5,5" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="BloodPressure_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="Red" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/blood-pressure.jpg" Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="80" Width="80" HorizontalOptions="Left" VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/blood-pressure.jpg" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Blood Pressure"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="Red" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <HorizontalStackLayout HorizontalOptions="Left" Panel.ZIndex="9999" Margin="-65,0,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50*" />
+                                    <RowDefinition Height="50*" />
+                                </Grid.RowDefinitions>
+                                <Label x:Name="lblSys" Grid.Row="0" Grid.Column="0" FontSize="22"  FontAttributes="Bold" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                                <Label x:Name="lblDia" Grid.Row="0" Grid.Column="1" FontSize="22"  FontAttributes="Bold" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+
+                                <Label x:Name="lblPulse" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontSize="22"  FontAttributes="Bold" FontFamily="Poppins,sans-serif" HorizontalOptions="Center"></Label>
+
+                            </Grid>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardSPO2" Grid.Row="0" Grid.Column="2" Margin="5,5,5,5" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="SPO2_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="#60BCD3" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/SPO2.png" Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="70" Width="70" HorizontalOptions="Left"  VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/SPO2.png" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="SPO2"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#60BCD3" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label x:Name="lblSPO2" FontSize="26"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardHeightWeight" Grid.Row="0" Grid.Column="3" Margin="5,5,10,5" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="HeightWeight_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="#35308E" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/height.jpg"  Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="80" Width="80" HorizontalOptions="Left"  VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/height.jpg"  Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Height &amp; Weight"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#35308E" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <HorizontalStackLayout HorizontalOptions="Left">
+                            <Label x:Name="lblHeight" FontSize="26"  FontAttributes="Bold" Margin="10,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                            <Label x:Name="lblHAndW" Text=" &amp;" FontSize="24" FontAttributes="Bold" FontFamily="Poppins,sans-serif" Margin="-5,10,-5,5" HorizontalOptions="Center" VerticalOptions="Start"/>
+                            <Label x:Name="lblWeight" FontSize="26"  FontAttributes="Bold" Margin="5,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardBodyFat" Grid.Row="1" Grid.Column="0" Margin="10,5,5,10" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="BodyFat_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="#29656F" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/body-fat.jpg" Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="70" Width="70" HorizontalOptions="Left"  VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/body-fat.jpg" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Body Fat"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#29656F" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label x:Name="lblBodyFat" FontSize="26"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardOtoscope" Grid.Row="1" Grid.Column="1" Margin="5,5,5,10" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="Otoscope_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="#DB0A5D" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Image Source="/Assets/Imgs/otoscope.jpg" Grid.Column="0" />
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="80" Width="80" HorizontalOptions="Left"  VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/otoscope.jpg" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Otoscope"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#DB0A5D" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label Text="70 BPM"  FontSize="20"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border x:Name="cardStethoscope" Grid.Row="1" Grid.Column="2" Margin="5,5,5,10" UniformCornerRadius="20" Background="White" MouseLeftButtonUp="Stethoscope_Click" Cursor="Hand">
+                <Border.Effect>
+                    <DropShadowEffect Color="Red" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Margin="10,5,0,0" Height="80" Width="80" HorizontalOptions="Left"  VerticalOptions="Start">
+                        <Image Source="/Assets/Imgs/stethoscope.jpg" Grid.Column="0" />
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1" Margin="0,8,0,0">
+                        <Label Text="Stethoscope" FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="Red" Height="3" Margin="0,0,12,0" >
+                        </Border>
+
+                        <Label Text="70 BPM"  FontSize="20"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+
+
+
+            <Border Grid.Row="1" Grid.Column="2" Margin="5,5,5,10" UniformCornerRadius="20" Background="White" >
+                <Border.Effect>
+                    <DropShadowEffect Color="#E05B49" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Border Grid.Column="0" Margin="10,0,0,0" UniformCornerRadius="100" Height="70" Width="70" Background="#E05B49" HorizontalOptions="Left">
+                        <Image Source="/Assets/Imgs/BloodGlucose.png" Height="40" Grid.Column="0"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Blood Glucose"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#E05B49" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label Text="180 CM"  FontSize="20"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="3" Margin="5,5,5,10" UniformCornerRadius="20" Background="White">
+                <Border.Effect>
+                    <DropShadowEffect Color="#28a745" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Border Grid.Column="0" Margin="10,0,0,0" UniformCornerRadius="100" Height="70" Width="70" Background="#28a745" HorizontalOptions="Left">
+                        <Image Source="/Assets/Imgs/BloodLipid.png" Height="40" Grid.Column="0"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="Blood Lipid"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#28a745" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label Text="180 CM"  FontSize="20"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="4" Margin="5,5,10,10" UniformCornerRadius="20" Background="White" >
+                <Border.Effect>
+                    <DropShadowEffect Color="#28a745" BlurRadius="0" ShadowDepth="3" Direction="1"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="White" Height="30" VerticalOptions="Start"></Border>
+                    <Border Grid.Column="0" Margin="10,0,0,0" UniformCornerRadius="100" Height="70" Width="70" Background="White" HorizontalOptions="Left">
+                        <Image Source="/Assets/Imgs/HBA1C.png" Height="40" Grid.Column="0"/>
+                    </Border>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="HbA1c"  FontSize="20"  FontAttributes="Bold" Margin="15,25,0,10" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                        <Border Background="#28a745" Height="3" Margin="0,0,12,0" >
+                        </Border>
+                        <Label Text="180 CM"  FontSize="20"  FontAttributes="Bold" Margin="15,10,0,25" FontFamily="Poppins,sans-serif" HorizontalOptions="Left"></Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1" Grid.Column="3" Margin="10,5,10,10" StrokeShape="RoundRectangle 10" Background="White" >
+            </Border>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
